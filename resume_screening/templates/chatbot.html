@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('https://blogger.googleusercontent.com/img/a/AVvXsEjoIill0qKYHeX0_nB_gC5ZhKqiHnBo0SR8EG7S3LE5lI-sITekjsJkOkHKBKVCWtVZnNxRhwrbt7AMoV7I2lO6bUGgbKb5I7zg14krKQVG1so-l85JbElI8rwsvC0_3Mk773wWqRzQ_Jf8ExlREwZ68iyjP6ope-hfL5KkzEZdC5f9ztbnlyD0hcPkb1M') center center fixed;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #fff; /* Set text color to white for better visibility on the background */
+            animation: fadeIn 1s ease-in-out; /* Apply the fade-in animation */
+        }
+
+        .main-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .main-buttons button {
+            background-color: #000; /* Set button background color to black */
+            color: #fff; /* Set text color to white */
+            border: 2px solid #2980b9; /* Add a 2px solid border around the buttons */
+            border-radius: 35px;
+            padding: 15px;
+            margin: 30px;
+            width: 320px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-in-out; /* Apply the fade-in animation */
+        }
+
+        .main-buttons button:hover {
+            background-color: #333; /* Darker color on hover */
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Technology Page</h1>
+
+    <div class="main-buttons">
+        <button onclick="navigate('ai.html')">Artificial Intelligence</button>
+        <button onclick="navigate('ds.html')">Data Science</button>
+        <button onclick="navigate('cs.html')">Cyber Security</button>
+        <button onclick="navigate('cc.html')">Cloud Computing</button>
+    </div>
+
+    <script>
+        function navigate(page) {
+            window.location.href = page;
+        }
+    </script>
+
+</body>
+</html>

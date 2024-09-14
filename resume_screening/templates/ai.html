@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence</title>
+    <style>
+        /* Shared CSS styles for all category pages */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0; /* Remove default margin to ensure full width */
+            padding: 30px;
+            background: url('https://blogger.googleusercontent.com/img/a/AVvXsEgdWMGsVX1QpWvjLpIu2dulMPFjDuKA9RZ2y2lZqIgTRkk-FBlGJ1wXMlS9gUJTU_LTAJYE3lpLsF5olaNL8i7qIrwOD5DkjtbaWB1cYUVKggApPiBpzkDho7aMK_ay5O6COSC7WOiBwsMP1KYQ4JwNVa7GnEikYZPMJx-AGIr8IIN7HBgzTQtmU56LmZE') center center fixed;
+            background-size: cover;
+        }
+
+        .subcategory-buttons {
+            display: flex;
+            flex-direction: column; /* Change to column to arrange buttons vertically */
+            align-items: center; /* Center-align the buttons horizontally */
+            justify-content: center; /* Center-align the buttons vertically */
+            min-height: 100vh; /* Set a minimum height of the viewport */
+            animation: fadeIn 1s ease-out; /* Fade-in animation for buttons */
+        }
+
+        .subcategory-buttons button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 35px;
+            padding: 15px 30px; /* Adjust padding for height and width */
+            margin: 30px 0; /* Adjust margin for spacing between buttons */
+            font-size: 18px;
+            cursor: pointer;
+            width: 320px; /* Set a fixed width for all buttons */
+            transition: transform 0.3s ease-in-out; /* Add transition for smooth hover effect */
+        }
+
+        .subcategory-buttons button:hover {
+            background-color: #2980b9;
+            transform: scale(1.1); /* Scale effect on hover */
+        }
+
+        .subcategory-image,
+        .subcategory-video {
+            display: none;
+            max-width: 100%;
+            height: auto;
+            animation: zoomIn 1s ease-in-out; /* Zoom-in animation for image */
+        }
+
+        #textDisplay {
+            display: none;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        /* Add styling for the iframe (YouTube video) */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+            .subcategory-buttons button {
+                width: 80%; /* Adjust the width for smaller screens */
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="subcategory-buttons">
+        <button onclick="showContent('Road Map')">Road Map</button>
+        <button onclick="showAITutorial()">AI Tutorial</button>
+        <button onclick="showInterviewTips()">Interview Tips</button>
+        <button onclick="showJobroles()">Job Roles</button>
+        <button onclick="showtemplates()">Resume Template</button>
+    </div>
+
+    <img id="subcategoryImage" class="subcategory-image" src="" alt="Subcategory Image">
+    <div class="video-container" id="aiTutorialVideo">
+        <!-- Embedded YouTube Video (AI Tutorial) -->
+        <iframe width="560" height="315" src="" title="AI Tutorial Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+
+    <div id="textDisplay"></div>
+
+    <script>
+        function showContent(submodule) {
+            var subcategoryVideo = document.getElementById('aiTutorialVideo');
+            var textDisplay = document.getElementById('textDisplay');
+
+            if (submodule === 'Road Map') {
+                // Open the image in a new tab when 'Road Map' is clicked
+                window.open('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisLLc-ReBgfXDoT6JhwBcI_-bnV7vpAlp4ZX_rlbEbjF2-1Nt2YYcQBY1kkH5KgRK6H-fQrCpp0KLtXIymMyUqliW6WqNmDnWhLIeq7QwBuZIB4mUSjGz12zYhxGjvEU8wQazpuXFzKb4pZthVIZ6Tk2peK_CH5KaN5HhIVbIMRQGT0LQOgu_LQ7LrBdg/s572/ai%20roadmap.jpg', '_blank');
+            } else {
+                // Implement logic for other submodule clicks
+                subcategoryVideo.innerHTML = '';  // Clear existing content
+                textDisplay.style.display = 'none';
+            }
+        }
+
+        function showAITutorial() {
+            document.querySelector('.subcategory-buttons').style.display = 'none';
+            document.getElementById('subcategoryImage').style.display = 'none';
+
+            // Show the AI Tutorial video
+            document.getElementById('aiTutorialVideo').style.display = 'block';
+            document.getElementById('textDisplay').style.display = 'none';
+            document.getElementById('aiTutorialVideo').querySelector('iframe').src = 'https://www.youtube.com/embed/JMUxmLyrhSk?si=WobTHKIxX3IDcr4E';
+        }
+
+        function showInterviewTips() {
+            // Open a new page with interview tips content
+            window.open('interview_tips.html', '_blank');
+        }
+
+        function showJobroles() {
+            window.open('roles.html?category=ai', '_blank');
+        }
+
+        function showtemplates() {
+            // Open a new page with interview tips content
+            window.open('resume.html', '_blank');
+        }
+    </script>
+
+</body>
+</html>

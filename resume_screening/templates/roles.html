@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Roles</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 30px;
+            background-color: #f5f5f5;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://blogger.googleusercontent.com/img/a/AVvXsEhMOSxlG3-hsZb3di_7Ce-8wNRYnDY_xCrn3fy-hZFn_cIlMVky2pWYxv8lEhYDbeQEfMY44GyAPm_btKQbKjK4wM3G1GnD1GorS6YFZzWQBBVzTKF3NnpQfUUj-Af5_5_q0MwHl8-nJtC5W_efcwC3jKdj2_UdyBU7hISSHFlGX24JPfEG4oLyPplN-5Y');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #jobRoleDetails {
+            text-align: left;
+            animation: fadeIn 1s ease-out;
+            display: none;
+            /* Initially hide job details */
+            padding: 20px;
+            border: 1px solid #3498db;
+            /* Add border */
+            border-radius: 10px;
+            /* Add border-radius */
+            background-color: #fff;
+            /* Add background color */
+        }
+
+        #jobRoleDetailsContainer {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Add styling for job details */
+        #jobRoleDetails h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        #jobRoleDetails p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        #jobRoles {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            /* Adjust the height if needed */
+            width: 100%;
+            /* Take up the full width */
+        }
+
+        .job-role-button {
+            background-color: #000; /* Set button background color to black */
+            color: #fff; /* Set text color to white */
+            border: 2px solid #2980b9; /* Add a 2px solid border around the buttons */
+            border-radius: 35px;
+            padding: 15px;
+            margin: 30px;
+            width: 320px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-in-out; /* Apply the fade-in animation */
+        }
+
+        .job-role-button:hover {
+            background-color: #333; /* Darker color on hover */
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .job-role-button {
+                width: 80%;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="jobRoles" style="display: flex; align-items: center; justify-content: center; flex-direction: column;"></div>
+
+    <div id="jobRoleDetailsContainer">
+        <div id="jobRoleDetails"></div>
+    </div>
+
+    <script>
+            const jobRolesDiv = document.getElementById('jobRoles');
+            const jobRoleDetailsDiv = document.getElementById('jobRoleDetails');
+
+            function getQueryParam(param) {
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                return urlParams.get(param);
+            }
+
+            function selectJobRole(jobRole) {
+            // Hide job roles buttons
+            jobRolesDiv.style.display = 'none';
+
+            let description = '';
+            let imageUrl = '';
+                if (jobRole === 'AI Research Scientist') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> <span style="font-family: 'Times New Roman', Times, serif;"> $120,000 - $150,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;">AI Research Scientists are at the forefront of innovation, conducting in-depth research and developing cutting-edge algorithms to advance the field of artificial intelligence. They play a pivotal role in shaping the future of AI, publishing research papers, collaborating with peers, and contributing to groundbreaking projects,Conduct groundbreaking research in artificial intelligence,Develop innovative algorithms to solve complex problems.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgba2jrCrU6-_t-7fZMQPKpQpPXDFuzJCMk9_7-V2lWtHGYWZoOscp8NoYChKoLqTBxpMrcvcotspE4gJwK1z5RyjGwt9Jsmp8XXYcr3ZiszUAbgOv7NdFfuAkNqFS-0uaH5tOUv5eNih9gsyen3kav6ESScNJj9f3IRKKJkn_a5dYS246KvWytp7_5DnY';
+} else if (jobRole === 'AI Software Developer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $90,000 - $120,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> AI Software Developers are the architects behind intelligent software solutions. They write, optimize, and deploy code to implement AI algorithms into applications. Collaborating with data scientists and engineers, they contribute to the creation of sophisticated software that leverages the power of machine learning to solve complex problems,Design and develop software applications incorporating machine learning models,Collaborate with data scientists and engineers to integrate AI into products.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgba2jrCrU6-_t-7fZMQPKpQpPXDFuzJCMk9_7-V2lWtHGYWZoOscp8NoYChKoLqTBxpMrcvcotspE4gJwK1z5RyjGwt9Jsmp8XXYcr3ZiszUAbgOv7NdFfuAkNqFS-0uaH5tOUv5eNih9gsyen3kav6ESScNJj9f3IRKKJkn_a5dYS246KvWytp7_5DnY';
+
+} else if (jobRole === 'AI Product Manager') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $110,000 - $140,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> AI Product Managers are strategic leaders overseeing the development of AI-powered products. They ensure alignment with business goals, market needs, and regulatory requirements. By coordinating cross-functional teams, AI Product Managers bring innovative products to market, driving success through effective planning and execution,Oversee the entire lifecycle of AI product development,Align AI products with business goals and market needs.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgba2jrCrU6-_t-7fZMQPKpQpPXDFuzJCMk9_7-V2lWtHGYWZoOscp8NoYChKoLqTBxpMrcvcotspE4gJwK1z5RyjGwt9Jsmp8XXYcr3ZiszUAbgOv7NdFfuAkNqFS-0uaH5tOUv5eNih9gsyen3kav6ESScNJj9f3IRKKJkn_a5dYS246KvWytp7_5DnY';
+    } else if (jobRole === 'AI Quality Assurance Engineer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $80,000 - $110,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> AI Quality Assurance Engineers are guardians of AI system reliability. They focus on rigorous testing and validation to ensure AI applications meet stringent performance, accuracy, and reliability standards. Their meticulous efforts play a critical role in upholding the quality and integrity of AI technologies.Develop and execute comprehensive test plans for AI systems.Ensure the performance, accuracy, and reliability of AI applications.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgba2jrCrU6-_t-7fZMQPKpQpPXDFuzJCMk9_7-V2lWtHGYWZoOscp8NoYChKoLqTBxpMrcvcotspE4gJwK1z5RyjGwt9Jsmp8XXYcr3ZiszUAbgOv7NdFfuAkNqFS-0uaH5tOUv5eNih9gsyen3kav6ESScNJj9f3IRKKJkn_a5dYS246KvWytp7_5DnY';
+
+    } else if (jobRole === 'AI Security Specialist') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $100,000 - $130,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> AI Security Specialists are experts in safeguarding AI systems. They identify vulnerabilities, implement robust security measures, and ensure responsible and secure use of AI technologies. These specialists play a key role in maintaining the confidentiality, integrity, and availability of AI-driven solutions.Address security concerns in AI systems and applications.Identify vulnerabilities and potential security risks.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgba2jrCrU6-_t-7fZMQPKpQpPXDFuzJCMk9_7-V2lWtHGYWZoOscp8NoYChKoLqTBxpMrcvcotspE4gJwK1z5RyjGwt9Jsmp8XXYcr3ZiszUAbgOv7NdFfuAkNqFS-0uaH5tOUv5eNih9gsyen3kav6ESScNJj9f3IRKKJkn_a5dYS246KvWytp7_5DnY';
+
+    } else if (jobRole === 'Data Scientist') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $100,000 - $130,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Data Scientists are analytical experts who unravel insights from complex datasets. They construct predictive models, employ statistical techniques, and derive actionable insights to support strategic decision-making. Data Scientists are pivotal in transforming raw data into valuable business intelligence.Analyze and interpret complex data sets to derive actionable insights.Build predictive models using statistical and machine learning techniques.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEj81ond-xNOj33qZf3LxOaXeJ7lEe8kbC9K0rAenakIjEhS31_t2xxPXVZiNtQ3B5qt_ClGi_9r1kGTg9gf53dUvnv3JEC0-7T9SHWAcT9yjc619-aQs2RbFSPNPlhMlotyMpHwOIn0245johHQOCKp5Lyv7ZHzaJu6ATa5K9jYbzV600eW3oaUd7HtlTk';
+    } else if (jobRole === 'Data Analyst') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $70,000 - $90,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Data Analysts are adept at collecting, processing, and analyzing data to generate valuable insights. They utilize statistical methods and data visualization techniques to present findings. Data Analysts play a crucial role in informing business decisions and strategies through their interpretation of data.Collect, process, and analyze data to provide valuable insights.Create visualizations and reports for data-driven decision-making.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEj81ond-xNOj33qZf3LxOaXeJ7lEe8kbC9K0rAenakIjEhS31_t2xxPXVZiNtQ3B5qt_ClGi_9r1kGTg9gf53dUvnv3JEC0-7T9SHWAcT9yjc619-aQs2RbFSPNPlhMlotyMpHwOIn0245johHQOCKp5Lyv7ZHzaJu6ATa5K9jYbzV600eW3oaUd7HtlTk';
+    } else if (jobRole === 'Data Engineer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $90,000 - $120,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Data Engineers are architects of data systems, designing and developing robust infrastructures. They manage databases and create large-scale processing systems, enabling efficient data analytics. Data Engineers are instrumental in constructing the foundation for organizations to derive actionable insights.Design and develop the architecture for data systems.Manage and optimize databases for efficient data storage.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEj81ond-xNOj33qZf3LxOaXeJ7lEe8kbC9K0rAenakIjEhS31_t2xxPXVZiNtQ3B5qt_ClGi_9r1kGTg9gf53dUvnv3JEC0-7T9SHWAcT9yjc619-aQs2RbFSPNPlhMlotyMpHwOIn0245johHQOCKp5Lyv7ZHzaJu6ATa5K9jYbzV600eW3oaUd7HtlTk';
+    } else if (jobRole === 'Data Architect') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $110,000 - $140,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Data Architects are masterminds behind the design and implementation of data systems and structures. They ensure data consistency, integrity, and security within an organization. Data Architects play a vital role in shaping the blueprint for effective data management.Design and implement data systems and structures.Ensure data consistency, integrity, and security.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEj81ond-xNOj33qZf3LxOaXeJ7lEe8kbC9K0rAenakIjEhS31_t2xxPXVZiNtQ3B5qt_ClGi_9r1kGTg9gf53dUvnv3JEC0-7T9SHWAcT9yjc619-aQs2RbFSPNPlhMlotyMpHwOIn0245johHQOCKp5Lyv7ZHzaJu6ATa5K9jYbzV600eW3oaUd7HtlTk';
+    } else if (jobRole === 'Data Product Manager') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $100,000 - $130,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Data Product Managers are strategic leaders overseeing the development of data-related products. They ensure alignment with market needs and organizational goals, driving success through effective planning and execution. Data Product Managers play a pivotal role in delivering innovative data solutions to the market.Collaborate with cross-functional teams for product success.Analyze market trends and competition for product enhancement.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEj81ond-xNOj33qZf3LxOaXeJ7lEe8kbC9K0rAenakIjEhS31_t2xxPXVZiNtQ3B5qt_ClGi_9r1kGTg9gf53dUvnv3JEC0-7T9SHWAcT9yjc619-aQs2RbFSPNPlhMlotyMpHwOIn0245johHQOCKp5Lyv7ZHzaJu6ATa5K9jYbzV600eW3oaUd7HtlTk';
+    } else if (jobRole === 'Cybersecurity Analyst') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $80,000 - $100,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Cybersecurity Analysts are vigilant guardians against security threats. They monitor, analyze, and respond to potential cyber incidents to protect an organization's information systems. Cybersecurity Analysts play a critical role in maintaining the confidentiality and integrity of sensitive data.Monitor and analyze security threats to information systems.Implement security measures and protocols to protect against cyber threats.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgOYPAa2Xu6k7GVajFEtpSaVdVzpkqZNfV28yAxNfJvFe_sPw1PeigkvbxG7p0GMQEpf1WM4Pj34uRUFXaqgoTLk9RXMkaUcJxApWutkPMiU3jkKfCMmK3fAU45PIKwSBS3HIBYwjdtoEgdu15S_Xtmjr--JcI3rZOwjmTS_sQvZKix1Az56ZVku6KpoCc';
+    } else if (jobRole === 'Security Engineer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $90,000 - $110,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Security Engineers design and implement robust security solutions, conducting vulnerability assessments to fortify an organization's IT infrastructure. They are instrumental in ensuring the overall security and resilience of digital assets against evolving cyber threats.Design and implement security solutions for IT infrastructure.Conduct vulnerability assessments and security audits.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgOYPAa2Xu6k7GVajFEtpSaVdVzpkqZNfV28yAxNfJvFe_sPw1PeigkvbxG7p0GMQEpf1WM4Pj34uRUFXaqgoTLk9RXMkaUcJxApWutkPMiU3jkKfCMmK3fAU45PIKwSBS3HIBYwjdtoEgdu15S_Xtmjr--JcI3rZOwjmTS_sQvZKix1Az56ZVku6KpoCc';
+    } else if (jobRole === 'Security Architect') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $110,000 - $130,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Security Architects are architects of secure systems, networks, and applications. They develop and implement security strategies, working to mitigate potential risks. Security Architects play a crucial role in designing and building resilient structures to withstand evolving cybersecurity challenges.Design and build secure systems, networks, and applications.Develop and implement security strategies and frameworks.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgOYPAa2Xu6k7GVajFEtpSaVdVzpkqZNfV28yAxNfJvFe_sPw1PeigkvbxG7p0GMQEpf1WM4Pj34uRUFXaqgoTLk9RXMkaUcJxApWutkPMiU3jkKfCMmK3fAU45PIKwSBS3HIBYwjdtoEgdu15S_Xtmjr--JcI3rZOwjmTS_sQvZKix1Az56ZVku6KpoCc';
+    } else if (jobRole === 'Security Consultant') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $100,000 - $120,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Security Consultants provide expert guidance on security best practices. They assess and test security measures, helping organizations enhance their overall security posture. Security Consultants are instrumental in advising on proactive measures and response strategies against potential security threats.Provide expert advice on security best practices and compliance.Assess and test security measures to identify vulnerabilities.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgOYPAa2Xu6k7GVajFEtpSaVdVzpkqZNfV28yAxNfJvFe_sPw1PeigkvbxG7p0GMQEpf1WM4Pj34uRUFXaqgoTLk9RXMkaUcJxApWutkPMiU3jkKfCMmK3fAU45PIKwSBS3HIBYwjdtoEgdu15S_Xtmjr--JcI3rZOwjmTS_sQvZKix1Az56ZVku6KpoCc';
+    } else if (jobRole === 'Network Security Engineer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $90,000 - $110,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Network Security Engineers specialize in securing an organization's network infrastructure. They implement security measures, monitor for potential threats, and ensure robust connectivity. Network Security Engineers play a vital role in maintaining the integrity and availability of digital communication systems.Focus on securing an organization's network infrastructure.Implement security measures and protocols to protect data in transit.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgOYPAa2Xu6k7GVajFEtpSaVdVzpkqZNfV28yAxNfJvFe_sPw1PeigkvbxG7p0GMQEpf1WM4Pj34uRUFXaqgoTLk9RXMkaUcJxApWutkPMiU3jkKfCMmK3fAU45PIKwSBS3HIBYwjdtoEgdu15S_Xtmjr--JcI3rZOwjmTS_sQvZKix1Az56ZVku6KpoCc';
+    } else if (jobRole === 'Cloud Architect') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $120,000 - $150,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Cloud Architects are architects of the future, designing and implementing scalable, secure, and cost-effective cloud infrastructure. They collaborate with multiple cloud service providers to create innovative solutions. Cloud Architects play a pivotal role in shaping the cloud landscape for optimal performance and efficiency.Design and implement scalable and secure cloud infrastructure.Collaborate with stakeholders to understand business requirements.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgByVWEXFFs3uC0sCqsUDRi3la6MZbH6JmI4sdZ9Qv5GPF-XcZwHRko4kctloHFb0XZlbBFD7nA_8G-9sqXt_lyuW2DE0ehHPue5xtxfX0TgikNrT8ZSKy5ec_HmGCcR-en4eJqPjKGcWOIUkI4ZU5_FLUpqQElLz8pgG62VBRpOyWK64LGqJLvUN4Qy3A';
+    } else if (jobRole === 'Cloud Engineer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $90,000 - $120,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Cloud Engineers are instrumental in building and maintaining cloud environments. They configure and deploy applications, ensuring the reliability and performance of cloud services. Cloud Engineers play a crucial role in optimizing the use of cloud resources for efficient and scalable operations.Build and maintain cloud environments for optimal performance.Configure and deploy applications in the cloud.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgByVWEXFFs3uC0sCqsUDRi3la6MZbH6JmI4sdZ9Qv5GPF-XcZwHRko4kctloHFb0XZlbBFD7nA_8G-9sqXt_lyuW2DE0ehHPue5xtxfX0TgikNrT8ZSKy5ec_HmGCcR-en4eJqPjKGcWOIUkI4ZU5_FLUpqQElLz8pgG62VBRpOyWK64LGqJLvUN4Qy3A';
+    } else if (jobRole === 'Cloud Administrator') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $80,000 - $110,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Cloud Administrators are the backbone of day-to-day cloud operations. They manage infrastructure, monitor performance, optimize resource utilization, and troubleshoot issues. Cloud Administrators play a critical role in ensuring the seamless and secure functioning of cloud-based services.Manage day-to-day operations of cloud infrastructure.Monitor performance and troubleshoot issues in cloud environments.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgByVWEXFFs3uC0sCqsUDRi3la6MZbH6JmI4sdZ9Qv5GPF-XcZwHRko4kctloHFb0XZlbBFD7nA_8G-9sqXt_lyuW2DE0ehHPue5xtxfX0TgikNrT8ZSKy5ec_HmGCcR-en4eJqPjKGcWOIUkI4ZU5_FLUpqQElLz8pgG62VBRpOyWK64LGqJLvUN4Qy3A';
+    } else if (jobRole === 'Cloud Data Engineer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $100,000 - $130,000+</p>
+        <p><strong>Description:</strong> Cloud Data Engineers are architects of data solutions in the cloud. They design, build, and maintain cloud-based data solutions, including storage, processing, and analytics services. Cloud Data Engineers play a crucial role in harnessing the power of data in the cloud for actionable insights and strategic decision-making.Design, build, and maintain cloud-based data solutions.Implement storage, processing, and analytics services in the cloud.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgByVWEXFFs3uC0sCqsUDRi3la6MZbH6JmI4sdZ9Qv5GPF-XcZwHRko4kctloHFb0XZlbBFD7nA_8G-9sqXt_lyuW2DE0ehHPue5xtxfX0TgikNrT8ZSKy5ec_HmGCcR-en4eJqPjKGcWOIUkI4ZU5_FLUpqQElLz8pgG62VBRpOyWK64LGqJLvUN4Qy3A';
+
+    } else if (jobRole === 'Cloud Network Engineer') {
+    description = `
+        <h3>${jobRole}</h3>
+        <p><strong>Average Salary:</strong> $90,000 - $110,000+</p>
+        <p><strong>Description:</strong><span style="font-family: 'Times New Roman', Times, serif;"> Cloud Network Engineers specialize in designing and managing the network infrastructure of cloud environments. They ensure connectivity, security, and optimal performance. Cloud Network Engineers play a vital role in creating a robust and efficient network foundation for cloud-based operations.Design and manage network infrastructure in cloud environments.Ensure connectivity, security, and performance in cloud-based networks.</p>`;
+        imageUrl='https://blogger.googleusercontent.com/img/a/AVvXsEgByVWEXFFs3uC0sCqsUDRi3la6MZbH6JmI4sdZ9Qv5GPF-XcZwHRko4kctloHFb0XZlbBFD7nA_8G-9sqXt_lyuW2DE0ehHPue5xtxfX0TgikNrT8ZSKy5ec_HmGCcR-en4eJqPjKGcWOIUkI4ZU5_FLUpqQElLz8pgG62VBRpOyWK64LGqJLvUN4Qy3A';
+    }
+
+jobRoleDetailsDiv.innerHTML = `
+            <div>
+                ${description}
+                <img src="${imageUrl}" alt="${jobRole} Image" style="max-width: 100%; height: auto; margin-top: 20px; max-height: 300px;">
+
+            </div>
+        `;
+            jobRoleDetailsDiv.style.display = 'block';
+            }
+
+            const category = getQueryParam('category');
+
+            if (category === 'ai') {
+                jobRolesDiv.innerHTML = `
+                    <h2>AI Job Roles</h2>
+                    <button class="job-role-button" onclick="selectJobRole('AI Research Scientist')">AI Research Scientist</button>
+                    <button class="job-role-button" onclick="selectJobRole('AI Software Developer')">AI Software Developer</button>
+                    <button class="job-role-button" onclick="selectJobRole('AI Product Manager')">AI Product Manager</button>
+                    <button class="job-role-button" onclick="selectJobRole('AI Quality Assurance Engineer')">AI Quality Assurance Engineer</button>
+                    <button class="job-role-button" onclick="selectJobRole('AI Security Specialist')">AI Security Specialist</button>`;
+            } else if (category === 'ds') {
+                jobRolesDiv.innerHTML = `
+                    <h2>Data Science Job Roles</h2>
+                    <button class="job-role-button" onclick="selectJobRole('Data Scientist')">Data Scientist</button>
+                    <button class="job-role-button" onclick="selectJobRole('Data Analyst')">Data Analyst</button>
+                    <button class="job-role-button" onclick="selectJobRole('Data Engineer')">Data Engineer</button>
+                    <button class="job-role-button" onclick="selectJobRole('Data Architect')">Data Architect</button>
+                    <button class="job-role-button" onclick="selectJobRole('Data Product Manager')">Data Product Manager</button>`;
+            } else if (category === 'cc') {
+                jobRolesDiv.innerHTML = `
+                    <h2>Cloud Computing Job Roles</h2>
+                    <button class="job-role-button" onclick="selectJobRole('Cloud Architect')">Cloud Architect</button>
+                    <button class="job-role-button" onclick="selectJobRole('Cloud Engineer')">Cloud Engineer</button>
+                    <button class="job-role-button" onclick="selectJobRole('Cloud Administrator')">Cloud Administrator</button>
+                    <button class="job-role-button" onclick="selectJobRole('Cloud Data Engineer')">Cloud Data Engineer</button>
+                    <button class="job-role-button" onclick="selectJobRole('Cloud Network Engineer')">Cloud Network Engineer</button>`;
+            } else if (category === 'cs') {
+                jobRolesDiv.innerHTML = `
+                    <h2>Cyber Security Job Roles</h2>
+                    <button class="job-role-button" onclick="selectJobRole('Cybersecurity Analyst')">Cybersecurity Analyst</button>
+                    <button class="job-role-button" onclick="selectJobRole('Security Engineer')">Security Engineer</button>
+                    <button class="job-role-button" onclick="selectJobRole('Security Architect')">Security Architect</button>
+                    <button class="job-role-button" onclick="selectJobRole('Security Consultant')">Security Consultant</button>
+                    <button class="job-role-button" onclick="selectJobRole('Network Security Engineer')">Network Security Engineer</button>`;
+            } else {
+                jobRolesDiv.innerHTML = 'Job Roles for Unknown Category: ...';
+            }
+    </script>
+
+</body>
+
+</html>

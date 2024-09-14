@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Employee</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/icon.png') }}" type="image/x-icon">
+    <style>
+        header {
+            background-color: lightblue;
+            padding: 0;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .navbar {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around; /* Adjust as needed */
+        }
+
+        .nav-button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img class="logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+
+        <nav>
+            <ul class="navbar">
+
+                <li><button onclick="home()" class="nav-button">Home</button></li>
+                <li><button onclick="openChatbot()" class="nav-button">Open Chatbot</button></li>
+                <li><button onclick="Interact()" class="nav-button">Interact</button></li>
+            </ul>
+        </nav>
+    </header>
+    <center>
+        <h1 class="title"> Upload Your Resume/CV</h1>
+        <form method="POST" action="/employee_submit" enctype="multipart/form-data">
+            <label for="fileUpload" id="upload">
+                <img src="{{ url_for('static', filename='img/file-upload.png') }}" alt="">
+                <span id="text">Choose File</span>
+            </label>
+            <input type="file" name="userfile" id="fileUpload" hidden>
+            <label for="submit">
+                <img src="{{ url_for('static', filename='img/a62fc438-51e2-4b45-a08a-c8f8c6b88440.jpg') }}" alt="">
+                <span>Submit</span>
+            </label>
+            <input type="submit" id="submit" hidden>
+        </form>
+        <div id="result" class="job_recommendation">
+            <table>
+                <tr>
+                    {% for col in column_names %}
+                    <th>{{col}}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in row_data %}
+                <tr>
+                    {% for col, row_ in zip(column_names, row) %}
+                    {% if col == link_column %}
+                    <td>
+                        <a href="{{row_}}">
+                            <button type="submit" value={{ row_ }} name="link" form="link_form" class="link_button">
+                                Apply
+                            </button>
+                        </a>
+                    </td>
+                    {% else %}
+                    <td>{{row_}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </center>
+    <footer>
+        <div class="copyright">
+
+        </div>
+    </footer>
+    <script src="" async defer></script>
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
+    <script src="{{ url_for('static', filename='java/button.js') }}"></script>
+    <!-- Add this button to your employee.html -->
+    <script>
+        function home() {
+            window.open('http://localhost:8000/', '_blank');
+        }
+        function openChatbot() {
+            // Open the chatbot interface in a new window
+            window.open('http://localhost:8000/chatbot', '_blank');
+        }
+        function Interact() {
+            window.open('http://localhost:8000/ui', '_blank');
+        }
+    </script>
+</body>
+
+</html>

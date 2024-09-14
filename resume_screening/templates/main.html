@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Page</title>
+    <style>
+        /* Shared CSS styles for all category pages */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .main-buttons button {
+            display: block;
+            width: 350px;
+            margin: 10px auto;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-buttons">
+        <button onclick="navigate('ai.html')">Artificial Intelligence</button>
+        <button onclick="navigate('ds.html')">Data Science</button>
+        <button onclick="navigate('cs.html')">Cyber Security</button>
+        <button onclick="navigate('cc.html')">Cloud Computing</button>
+    </div>
+
+    <script>
+        function navigate(page) {
+            window.location.href = page;
+        }
+    </script>
+
+</body>
+</html>
