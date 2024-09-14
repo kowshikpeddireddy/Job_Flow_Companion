@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 
 # Set your OpenAI API key here
-# api_key = "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"
+
 api_key=''
 client = OpenAI(api_key=api_key)
 
