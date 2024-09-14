@@ -9,9 +9,9 @@ from tkinter import ttk
 
 # Global variables
 emotion_frequencies = {}
-api_key = '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'
+# api_key = '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'
 
-
+api_key=''
 # Initialize OpenAI client
 client = OpenAI(api_key=api_key)
 
